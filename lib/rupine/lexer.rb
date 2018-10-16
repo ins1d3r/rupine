@@ -2,7 +2,14 @@ module Rupine
   class Lexer
 
     TOKENS = [
+        {id: :comment, rx: /\/\/.*$/},
+        {id: :arrow, rx: /=>/},
+        {id: :ge, rx: />=/},
+        {id: :gt, rx: />/},
+        {id: :le, rx: /<=/},
+        {id: :lt, rx: /</},
         {id: :eq, rx: /==/},
+        {id: :neq, rx: /!=/},
         {id: :define, rx: /=/},
         {id: :lpar, rx: /\(/},
         {id: :id, rx: /[a-zA-Z_][a-zA-Z0-9_]*/, value: ->(value){value}},
@@ -39,7 +46,7 @@ module Rupine
             match = token_def[:rx].match(src)[0]
             token[:value] = token_def[:value].call(match) if token_def[:value]
             src = src[match.size..-1]
-            tokens << token unless token[:name] == :whitespace
+            tokens << token unless %i[whitespace comment].include? token[:name]
             next
           end
         end

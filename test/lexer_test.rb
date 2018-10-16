@@ -73,6 +73,54 @@ class LexerTest < Minitest::Test
                  ], tkns
   end
 
+  def test_comparison_operators
+    l = ::Rupine::Lexer.new
+    tkns = l.lex('2 < 3 and 5 > 4')
+    assert_equal [
+                     {name: :integer, value: 2},
+                     {name: :lt},
+                     {name: :integer, value: 3},
+                     {name: :and},
+                     {name: :integer, value: 5},
+                     {name: :gt},
+                     {name: :integer, value: 4}
+                 ], tkns
+  end
+
+  def test_comparison_equal_operators
+    l = ::Rupine::Lexer.new
+    tkns = l.lex('2 <= 3 and 5 >= 4')
+    assert_equal [
+                     {name: :integer, value: 2},
+                     {name: :le},
+                     {name: :integer, value: 3},
+                     {name: :and},
+                     {name: :integer, value: 5},
+                     {name: :ge},
+                     {name: :integer, value: 4}
+                 ], tkns
+  end
+
+  def test_equal_operator
+    l = ::Rupine::Lexer.new
+    tkns = l.lex('4 == 4')
+    assert_equal [
+                     {name: :integer, value: 4},
+                     {name: :eq},
+                     {name: :integer, value: 4},
+                 ], tkns
+  end
+
+  def test_not_equal_operator
+    l = ::Rupine::Lexer.new
+    tkns = l.lex('4 != 4')
+    assert_equal [
+                     {name: :integer, value: 4},
+                     {name: :neq},
+                     {name: :integer, value: 4},
+                 ], tkns
+  end
+
   def test_newline
     l = ::Rupine::Lexer.new
     code = <<~END
