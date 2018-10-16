@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rupine.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ruby-gemset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/rupine.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/rupine/lexer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/rupine/version.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rupine.gemspec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/rupine_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
+    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/lexer_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/rupine/lexer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rupine/lexer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/rupine_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/rupine_test.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/rupine@Run_test__rupine_test___rupine.rcov" NAME="Run test 'rupine_test': rupine Coverage Results" MODIFIED="1539631573725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rupine" />
+    <SUITE FILE_PATH="coverage/rupine@Run_test__rupine_test___rupine.rcov" NAME="Run test 'rupine_test': rupine Coverage Results" MODIFIED="1539653897766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rupine" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-504170659">
@@ -52,7 +33,7 @@
         <counts>
           <entry key="gemspec" value="2" />
           <entry key="gitignore" value="1" />
-          <entry key="rb" value="8" />
+          <entry key="rb" value="11" />
           <entry key="ruby-gemset" value="3" />
           <entry key="ruby-version" value="1" />
           <entry key="setup" value="1" />
@@ -63,24 +44,28 @@
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="RbenvGemsets" value="3" />
-          <entry key="Ruby" value="10" />
+          <entry key="Ruby" value="13" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gemspec" value="131" />
-          <entry key="rb" value="1414" />
+          <entry key="rb" value="2154" />
           <entry key="txt" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="15" />
-          <entry key="Ruby" value="1545" />
+          <entry key="Ruby" value="2285" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+        </counts>
+      </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.actions.runAnything" />
     </session>
@@ -97,11 +82,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/rupine/version.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/rupine.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -110,25 +90,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+            <state relative-caret-position="135">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/lexer_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="602">
+              <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            <state relative-caret-position="403">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -144,14 +128,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/rupine.gemspec" />
         <option value="$PROJECT_DIR$/lib/rupine.rb" />
-        <option value="$PROJECT_DIR$/lib/rupine/lexer.rb" />
         <option value="$PROJECT_DIR$/test/rupine_test.rb" />
+        <option value="$PROJECT_DIR$/test/lexer_test.rb" />
+        <option value="$PROJECT_DIR$/lib/rupine/lexer.rb" />
       </list>
     </option>
   </component>
@@ -243,11 +233,11 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/rupine_test.rb" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/test" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/{*_test,test_*,*_spec}.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
@@ -275,46 +265,54 @@
       <workItem from="1539457963861" duration="1632000" />
       <workItem from="1539542718497" duration="275000" />
       <workItem from="1539578881897" duration="1272000" />
-      <workItem from="1539581276435" duration="5461000" />
+      <workItem from="1539581276435" duration="10173000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1539631854362</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1539631854362</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 15m 09s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 41m 52s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 15m 34s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 42m 17s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 17m 25s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 43m 11s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 18m 06s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 44m 25s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 18m 17s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 44m 48s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 18m 48s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 45m 00s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 18m 55s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 45m 18s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 20m 24s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 00h 45m 41s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 20m 36s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 04h 27m 01s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.15 at 22h 26m 14s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.16 at 04h 38m 18s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10345000" />
+    <option name="totallyTimeSpent" value="15057000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -331,16 +329,16 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840257" weight="0.23785926" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4978701" visible="true" weight="0.23785926" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978701" weight="0.39940536" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946752" visible="true" weight="0.32903865" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946752" weight="0.32903865" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3293124" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49946752" weight="0.32903865" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3293124" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005325" side_tool="true" visible="true" weight="0.32903865" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5021299" side_tool="true" visible="true" weight="0.23785926" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3293124" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -365,7 +363,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/rupine/lexer.rb</url>
-          <line>34</line>
+          <line>47</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -410,6 +408,27 @@
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.5.1@rupine/gems/minitest-5.11.3/lib/minitest/assertions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.5.1@rupine/gems/minitest-5.11.3/lib/minitest/autorun.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/rupine/version.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -420,27 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.5.1@rupine/gems/minitest-5.11.3/lib/minitest/assertions.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/rupine.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -448,8 +446,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_helper.rb">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lexer_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

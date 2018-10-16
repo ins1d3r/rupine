@@ -2,13 +2,28 @@ module Rupine
   class Lexer
 
     TOKENS = [
-        {id: :id, rx: /[a-zA-Z][a-zA-Z0-9]*/, value: ->(value){value}},
+        {id: :and, rx: /and /},
+        {id: :or, rx: /or /},
+        {id: :not, rx: /not /},
+        {id: :eq, rx: /==/},
+        {id: :define, rx: /=/},
+        {id: :lpar, rx: /\(/},
+        {id: :id, rx: /[a-zA-Z_][a-zA-Z0-9_]*/, value: ->(value){value}},
         {id: :lpar, rx: /\(/},
         {id: :rpar, rx: /\)/},
+        {id: :lsqbr, rx: /\[/},
+        {id: :rsqbr, rx: /]/},
         {id: :comma, rx: /,/},
         {id: :plus, rx: /\+/},
-        {id: :string, rx:/"[a-zA-Z0-9]*"/, value: ->(value){value[1..-2]}},
-        {id: :number, rx:/[0-9]+/, value: ->(value){value.to_i}},
+        {id: :minus, rx: /-/},
+        {id: :mul, rx: /\*/},
+        {id: :div, rx: /\//},
+        {id: :mod, rx: /%/},
+        {id: :string, rx:/".*?"/, value: ->(value){value[1..-2]}},
+        {id: :string, rx:/'.*?'/, value: ->(value){value[1..-2]}},
+        {id: :float, rx:/[0-9]*\.[0-9]+/, value: ->(value){value.to_f}},
+        {id: :integer, rx:/[0-9]+/, value: ->(value){value.to_i}},
+        {id: :newline, rx: /\R/},
         {id: :whitespace, rx:/\s+/}
     ]
     def lex(code)
@@ -17,7 +32,6 @@ module Rupine
       # Prepare code for lexing
 
       # Separate code to tokens
-      current_token = ''
       while src.length > 0
         TOKENS.each do |token_def|
           if (token_def[:rx] =~ src) == 0
@@ -25,11 +39,10 @@ module Rupine
             match = token_def[:rx].match(src)[0]
             token[:value] = token_def[:value].call(match) if token_def[:value]
             src = src[match.size..-1]
-            tokens << token
+            tokens << token unless token[:name] == :whitespace
             next
           end
         end
-        # raise 'Unknown token at: ' + src
       end
 
       tokens
