@@ -2,9 +2,6 @@ module Rupine
   class Lexer
 
     TOKENS = [
-        {id: :and, rx: /and /},
-        {id: :or, rx: /or /},
-        {id: :not, rx: /not /},
         {id: :eq, rx: /==/},
         {id: :define, rx: /=/},
         {id: :lpar, rx: /\(/},
@@ -26,6 +23,9 @@ module Rupine
         {id: :newline, rx: /\R/},
         {id: :whitespace, rx:/\s+/}
     ]
+
+    KEYWORDS = %w[and or not if else for to]
+
     def lex(code)
       src = code.dup
       tokens = []
@@ -45,6 +45,14 @@ module Rupine
         end
       end
 
+      # Replace identifiers with keywords
+      tokens.map! do |token|
+        if token[:name] == :id and KEYWORDS.include? token[:value]
+          {name: token[:value].to_sym}
+        else
+          token
+        end
+      end
       tokens
     end
   end
