@@ -19,7 +19,7 @@ module Rupine
       # Script is a set of statements
       tvscript= []
       until eof
-        tvscript << parse_expression
+        tvscript << try_math(parse_expression)
       end
       @current_tokens = []
       puts tvscript
@@ -29,7 +29,7 @@ module Rupine
     # Expression is function call or binary operation
     def parse_expression
       tkn = next_token
-      nxt = peek_token[:name]
+      nxt = peek_token[:name] unless eof
       current_node = nil
       if tkn[:name] == :id
         # Its function call or assignment
@@ -44,7 +44,8 @@ module Rupine
         elsif nxt == :define
           # Its variable assignment
           next_token # To drop define operator
-          parse_expression
+          # try_math(parse_expression)
+          # TODO:
         else
           # Seems that we have a variable call
           current_node = {type: :var, name: tkn[:value]}
@@ -52,13 +53,25 @@ module Rupine
       elsif tkn[:name] == :integer
         # Just return the integer
         current_node = {type: :integer, value: tkn[:value]}
+      else
+        current_node = parse_punctuation(tkn)
       end
-      nxt = peek_token
-      if OP_PREC.include? nxt
-        # We are in a big trouble
 
-      end
       current_node
+    end
+
+    def parse_punctuation(token)
+      if token[:name] == :lpar
+        exp = try_math(parse_expression)
+        if peek_token[:name] == :rpar
+          next_token
+        else
+          raise
+        end
+        exp
+      else
+        raise
+      end
     end
 
     # Arguments are comma separated statements or assignments
@@ -76,6 +89,21 @@ module Rupine
       end
       next_token # To drop right parenthesis
       args
+    end
+
+    def try_math(left, precendence = 0)
+      return left if eof
+      nxt = peek_token[:name]
+      if OP_PREC.keys.include? nxt and OP_PREC[nxt] > precendence
+        next_token
+        return try_math({
+            type: :binary,
+            op: nxt,
+            left: left,
+            right: try_math(parse_expression, OP_PREC[nxt])
+        }, precendence)
+      end
+      left
     end
 
     def peek_token
