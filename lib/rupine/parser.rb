@@ -1,5 +1,6 @@
 module Rupine
   class Parser
+    # Operator precendence
     OP_PREC = {
         or: 20,
         and: 30,
@@ -16,42 +17,65 @@ module Rupine
       raise 'Not an array of tokens' unless tokens.is_a? Array
       @current_tokens = tokens
       # Script is a set of statements
+      tvscript= []
       until eof
-        parse_expression
+        tvscript << parse_expression
       end
       @current_tokens = []
+      puts tvscript
+      tvscript
     end
 
     # Expression is function call or binary operation
     def parse_expression
       tkn = next_token
-      nxt = peek_token
+      nxt = peek_token[:name]
+      current_node = nil
       if tkn[:name] == :id
         # Its function call or assignment
-        if nxt[:name] == :lpar # (
+        if nxt == :lpar # (
           # Its function call
           next_token # To drop parenthesis
-          parse_arguments(tkn)
-        elsif nxt[:name] == :define
+          current_node = {
+            type: :fun_call,
+            name: tkn[:value],
+            args: parse_arguments
+          }
+        elsif nxt == :define
           # Its variable assignment
+          next_token # To drop define operator
           parse_expression
+        else
+          # Seems that we have a variable call
+          current_node = {type: :var, name: tkn[:value]}
         end
+      elsif tkn[:name] == :integer
+        # Just return the integer
+        current_node = {type: :integer, value: tkn[:value]}
       end
+      nxt = peek_token
+      if OP_PREC.include? nxt
+        # We are in a big trouble
+
+      end
+      current_node
     end
 
     # Arguments are comma separated statements or assignments
-    def parse_arguments(_fun_name)
+    def parse_arguments
       args = []
-      nxt = peek_token[:name]
       loop do
+        nxt = peek_token[:name]
+        nxt = next_token[:name] if nxt == :comma # TODO: Throw exception if there was no comma after argument
         break if nxt == :rpar # There was no arguments
         arg = parse_expression
         # TODO: add keyword support and index of argument
         args << arg
         break if nxt == :rpar # We've done parsing arguments
-        next_token if nxt == :comma # TODO: Throw exception if there was no comma after argument
         break if eof # Looks like we've forgot closing parenthesis TODO: Throw exception
       end
+      next_token # To drop right parenthesis
+      args
     end
 
     def peek_token
@@ -63,7 +87,7 @@ module Rupine
     end
 
     def eof
-      @current_tokens.size > 0
+      @current_tokens.size == 0
     end
   end
 end

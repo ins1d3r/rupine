@@ -1,7 +1,7 @@
 require "test_helper"
 
 class LexerTest < Minitest::Test
-  def test_it_starts
+  def test_lexer_starts
     ::Rupine::Lexer.new
   end
 
