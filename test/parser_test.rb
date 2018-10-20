@@ -79,4 +79,10 @@ class ParserTest < Minitest::Test
     res = @p.parse(tokens)
     assert_equal :question, res[0][:op]
   end
+
+  def test_var_def
+    tokens = @l.lex('var1 = 5 + 4')
+    res = @p.parse(tokens)
+    assert_equal :define, res[0][:type]
+  end
 end

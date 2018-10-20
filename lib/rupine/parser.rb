@@ -48,8 +48,7 @@ module Rupine
         elsif nxt == :define
           # Its variable assignment
           next_token # To drop define operator
-          # try_math(parse_expression)
-          # TODO:
+          current_node = {type: :define, left: {type: :var, name: tkn[:value]}, right: try_math(parse_expression)}
         else
           # Seems that we have a variable call
           current_node = {type: :var, name: tkn[:value]}
