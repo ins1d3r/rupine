@@ -23,6 +23,8 @@ module Rupine
         {id: :mul, rx: /\*/},
         {id: :div, rx: /\//},
         {id: :mod, rx: /%/},
+        {id: :question, rx: /\?/},
+        {id: :colon, rx: /:/},
         {id: :string, rx:/".*?"/, value: ->(value){value[1..-2]}},
         {id: :string, rx:/'.*?'/, value: ->(value){value[1..-2]}},
         {id: :float, rx:/[0-9]*\.[0-9]+/, value: ->(value){value.to_f}},

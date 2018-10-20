@@ -73,4 +73,10 @@ class ParserTest < Minitest::Test
     assert_equal :unary, res[0][:type]
     assert_equal :not, res[0][:op]
   end
+
+  def test_question_mark
+    tokens = @l.lex('5 > 2 ? close : open')
+    res = @p.parse(tokens)
+    assert_equal :question, res[0][:op]
+  end
 end

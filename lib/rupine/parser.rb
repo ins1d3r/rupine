@@ -2,6 +2,8 @@ module Rupine
   class Parser
     # Operator precendence
     OP_PREC = {
+        question: 10,
+        colon: 11,
         or: 20,
         and: 30,
         eq: 40, neq: 40,
@@ -62,11 +64,21 @@ module Rupine
             op: tkn[:name],
             value: try_math(parse_expression)
         }
+      # elsif tkn[:name] == :question
+      #   # Drop the question mark
+      #   next_token
+      #   left = try_math(parse_expression, 10)
+      #   if !eof && peek_token[:name] == :colon
+      #     next_token
+      #   else
+      #     # TODO: Forgotten colon
+      #     raise
+      #   end
+      #   right = try_math(parse_expression)
+      #   current_node = {type: :cond, cond: current_node, left: left, right: right}
       else
         current_node = parse_punctuation(tkn)
       end
-
-
       current_node
     end
 
@@ -108,6 +120,7 @@ module Rupine
       return left if eof
       nxt = peek_token[:name]
       if OP_PREC.keys.include? nxt and OP_PREC[nxt] > precendence
+        # FIXME: nested ?: operators
         next_token
         return try_math({
             type: :binary,
