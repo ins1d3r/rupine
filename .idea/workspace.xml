@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="Unary operators">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="Deleted .idea folder again">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rupine.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,12 +68,12 @@
           <entry key="gitignore" value="47" />
           <entry key="rb" value="6782" />
           <entry key="ruby-gemset" value="7" />
-          <entry key="txt" value="220" />
+          <entry key="txt" value="249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="267" />
+          <entry key="PLAIN_TEXT" value="296" />
           <entry key="RbenvGemsets" value="7" />
           <entry key="Ruby" value="7227" />
         </counts>
@@ -118,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -353,7 +358,7 @@
       <workItem from="1539752562646" duration="517000" />
       <workItem from="1539864595129" duration="454000" />
       <workItem from="1539880134124" duration="9963000" />
-      <workItem from="1539902824685" duration="13879000" />
+      <workItem from="1539902824685" duration="14131000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1539631854362</created>
@@ -425,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540002764796</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Deleted .idea folder">
+      <created>1540002930637</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1540002930637</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -461,7 +473,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44845000" />
+    <option name="totallyTimeSpent" value="45097000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -474,9 +486,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49851337" visible="true" weight="0.26752505" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49851337" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" sideWeight="0.5014866" side_tool="true" weight="0.19914803" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -489,7 +500,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49642345" weight="0.4004825" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49840257" weight="0.32903865" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49840257" visible="true" weight="0.32810616" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50429183" side_tool="true" weight="0.23587711" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3293124" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -543,7 +554,9 @@
     <MESSAGE value="Parser class &amp; tests" />
     <MESSAGE value="Binary operations" />
     <MESSAGE value="Unary operators" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unary operators" />
+    <MESSAGE value="Deleted .idea folder" />
+    <MESSAGE value="Deleted .idea folder again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted .idea folder again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,7 +740,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
