@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoTestManager">
-    <enabled-run-configurations>
-      <run-configuration type="TestUnitRunConfigurationType" name="Run test 'rupine_test': rupine" />
-    </enabled-run-configurations>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/parser_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/pro.xml" afterDir="false" />
+    <list default="true" id="be432775-27a3-4bb4-a662-8f03264275e0" name="Default Changelist" comment="Unary operators">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rupine.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rupine.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/rupine/parser.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/rupine/parser.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/lexer_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/lexer_test.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +13,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/rupine@default.rcov" NAME="default Coverage Results" MODIFIED="1539903887710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rupine" />
-    <SUITE FILE_PATH="coverage/rupine@Run_test__rupine_test___rupine.rcov" NAME="Run test 'rupine_test': rupine Coverage Results" MODIFIED="1539907798585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rupine" />
+    <SUITE FILE_PATH="coverage/rupine@Run_test__rupine_test___rupine.rcov" NAME="Run test 'rupine_test': rupine Coverage Results" MODIFIED="1540002477784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rupine" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-504170659">
@@ -42,7 +33,7 @@
         <counts>
           <entry key="console" value="1" />
           <entry key="gemspec" value="2" />
-          <entry key="gitignore" value="2" />
+          <entry key="gitignore" value="3" />
           <entry key="js" value="2" />
           <entry key="md" value="1" />
           <entry key="rb" value="21" />
@@ -56,7 +47,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="PLAIN_TEXT" value="6" />
           <entry key="RbenvGemsets" value="5" />
           <entry key="Ruby" value="24" />
           <entry key="Scratch" value="2" />
@@ -66,20 +57,20 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Ruby Console" value="223" />
+          <entry key="Ruby Console" value="254" />
           <entry key="console" value="60" />
           <entry key="gemspec" value="131" />
-          <entry key="gitignore" value="42" />
-          <entry key="rb" value="5267" />
+          <entry key="gitignore" value="47" />
+          <entry key="rb" value="6782" />
           <entry key="ruby-gemset" value="7" />
-          <entry key="txt" value="174" />
+          <entry key="txt" value="220" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="216" />
+          <entry key="PLAIN_TEXT" value="267" />
           <entry key="RbenvGemsets" value="7" />
-          <entry key="Ruby" value="5681" />
+          <entry key="Ruby" value="7227" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -92,103 +83,80 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/bin/console">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" selection-start-line="14" selection-end-line="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="784">
-                  <caret line="62" selection-start-line="62" selection-end-line="62" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/lib/rupine/parser.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="54">
-                  <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/parser_test.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/lexer_test.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-290">
-                  <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1200">
-                  <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
-                  <folding>
-                    <element signature="n#!!block;n#is_punc#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#is_kw#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#is_op#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#skip_punc#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#skip_kw#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#skip_op#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#unexpected#0;n#!!block;n#parse#0" />
-                    <element signature="e#1921#2103#0" />
-                    <element signature="n#!!block;n#parse_varname#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#parse_if#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#parse_lambda#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#parse_bool#0;n#!!block;n#parse#0" />
-                    <element signature="n#!!block;n#parse_toplevel#0;n#!!block;n#parse#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="654">
-                  <caret line="65" selection-start-line="1" selection-end-line="65" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/console">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/rupine/parser.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+              <folding>
+                <element signature="e#1406#1985#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/parser_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1183">
+              <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
+              <folding>
+                <element signature="n#!!block;n#is_punc#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#is_kw#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#is_op#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#skip_punc#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#skip_kw#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#skip_op#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#unexpected#0;n#!!block;n#parse#0" />
+                <element signature="e#1921#2103#0" />
+                <element signature="n#!!block;n#parse_varname#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#parse_if#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#parse_lambda#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#parse_bool#0;n#!!block;n#parse#0" />
+                <element signature="n#!!block;n#parse_toplevel#0;n#!!block;n#parse#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -211,7 +179,6 @@
       <list>
         <option value="$PROJECT_DIR$/rupine.gemspec" />
         <option value="$PROJECT_DIR$/test/rupine_test.rb" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.ruby-gemset" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.js" />
         <option value="$PROJECT_DIR$/lib/rupine/lexer.rb" />
@@ -220,6 +187,7 @@
         <option value="$PROJECT_DIR$/test/lexer_test.rb" />
         <option value="$PROJECT_DIR$/test/parser_test.rb" />
         <option value="$PROJECT_DIR$/lib/rupine/parser.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -238,10 +206,53 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rupine" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="rupine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="ru&#9;FILE&#9;file:///Users/pro/Desktop/Current Projects/rupine/lib/rupine.rb" />
+    <property name="SearchEverywhereHistoryKey" value="push&#9;ACTION&#9;Vcs.Push&#10;ru&#9;FILE&#9;file:///Users/pro/Desktop/Current Projects/rupine/lib/rupine.rb" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
@@ -342,7 +353,7 @@
       <workItem from="1539752562646" duration="517000" />
       <workItem from="1539864595129" duration="454000" />
       <workItem from="1539880134124" duration="9963000" />
-      <workItem from="1539902824685" duration="5846000" />
+      <workItem from="1539902824685" duration="13879000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1539631854362</created>
@@ -393,43 +404,64 @@
       <option name="project" value="LOCAL" />
       <updated>1539902489059</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Parser class &amp; tests">
+      <created>1539984726221</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1539984726221</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Binary operations">
+      <created>1539993261000</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1539993261000</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Unary operators">
+      <created>1540002764796</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1540002764796</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 02h 59m 51s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 03h 57m 58s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 00m 02s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 03h 59m 01s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 00m 20s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 01m 15s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 00m 34s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 01m 34s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 01m 46s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 01m 48s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 02m 29s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 02m 05s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 02m 44s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 02m 16s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 09m 14s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 02m 22s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 09m 18s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 04h 02m 29s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.19 at 03h 09m 59s.xml">
+    <history-entry file="Run_test_'rupine_test'__rupine - 2018.10.20 at 05h 27m 58s.xml">
       <configuration name="Run test 'rupine_test': rupine" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36812000" />
+    <option name="totallyTimeSpent" value="44845000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -441,15 +473,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49851337" weight="0.19914803" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49851337" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" sideWeight="0.5014866" side_tool="true" weight="0.19914803" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49570817" visible="true" weight="0.23203884" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978701" weight="0.407334" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49570817" weight="0.3618818" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4978701" weight="0.33294117" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946752" weight="0.32903865" />
@@ -507,15 +540,23 @@
     <MESSAGE value="Hotfix: Missed 'equal' token" />
     <MESSAGE value="Repo cleaning" />
     <MESSAGE value="Identifier parsing (in progress)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Identifier parsing (in progress)" />
+    <MESSAGE value="Parser class &amp; tests" />
+    <MESSAGE value="Binary operations" />
+    <MESSAGE value="Unary operators" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unary operators" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/rupine/parser.rb</url>
-          <line>67</line>
-          <option name="timeStamp" value="8" />
+          <line>115</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/rupine/lexer.rb</url>
+          <line>9</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -592,35 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!block;n#is_punc#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#is_kw#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#is_op#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#skip_punc#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#skip_kw#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#skip_op#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#unexpected#0;n#!!block;n#parse#0" />
-            <element signature="e#1921#2103#0" />
-            <element signature="n#!!block;n#parse_varname#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#parse_if#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#parse_lambda#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#parse_bool#0;n#!!block;n#parse#0" />
-            <element signature="n#!!block;n#parse_toplevel#0;n#!!block;n#parse#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/setup">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -645,31 +657,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/console">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/rupine/lexer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="784">
           <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/parser_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -680,10 +671,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1183">
+          <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!block;n#is_punc#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#is_kw#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#is_op#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#skip_punc#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#skip_kw#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#skip_op#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#unexpected#0;n#!!block;n#parse#0" />
+            <element signature="e#1921#2103#0" />
+            <element signature="n#!!block;n#parse_varname#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#parse_if#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#parse_lambda#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#parse_bool#0;n#!!block;n#parse#0" />
+            <element signature="n#!!block;n#parse_toplevel#0;n#!!block;n#parse#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/console">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/parser_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/rupine_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/rupine/parser.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+        <state relative-caret-position="1185">
+          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+          <folding>
+            <element signature="e#1406#1985#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>
