@@ -54,4 +54,23 @@ class ParserTest < Minitest::Test
     assert res[0][:left][:left][:value] == 5
   end
 
+  def test_unary_minus
+    tokens = @l.lex('-10')
+    res = @p.parse(tokens)
+    assert_equal :unary, res[0][:type]
+  end
+
+  def test_unary_minus_in_exp
+    tokens = @l.lex('5 + -10')
+    res = @p.parse(tokens)
+    assert_equal :unary, res[0][:right][:type]
+    assert_equal :minus, res[0][:right][:op]
+  end
+
+  def test_not_keyword
+    tokens = @l.lex('not true')
+    res = @p.parse(tokens)
+    assert_equal :unary, res[0][:type]
+    assert_equal :not, res[0][:op]
+  end
 end

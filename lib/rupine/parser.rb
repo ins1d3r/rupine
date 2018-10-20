@@ -26,6 +26,8 @@ module Rupine
       tvscript
     end
 
+    protected
+
     # Expression is function call or binary operation
     def parse_expression
       tkn = next_token
@@ -53,12 +55,21 @@ module Rupine
       elsif tkn[:name] == :integer
         # Just return the integer
         current_node = {type: :integer, value: tkn[:value]}
+      elsif tkn[:name] == :minus || tkn[:name] == :plus || tkn[:name] == :not
+        # We are dealing with unary operation
+        current_node = {
+            type: :unary,
+            op: tkn[:name],
+            value: try_math(parse_expression)
+        }
       else
         current_node = parse_punctuation(tkn)
       end
 
+
       current_node
     end
+
 
     def parse_punctuation(token)
       if token[:name] == :lpar
@@ -66,10 +77,12 @@ module Rupine
         if peek_token[:name] == :rpar
           next_token
         else
+          # TODO: Forgotten rpar
           raise
         end
         exp
       else
+        # TODO: Looks like unexpected token
         raise
       end
     end
