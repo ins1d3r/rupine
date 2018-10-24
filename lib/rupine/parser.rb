@@ -19,16 +19,63 @@ module Rupine
       raise 'Not an array of tokens' unless tokens.is_a? Array
       @current_tokens = tokens
       # Script is a set of statements
-      tvscript= []
-      until eof
-        tvscript << try_math(parse_expression)
-      end
+      tvscript = parse_statement(0)
       @current_tokens = []
       puts tvscript
       tvscript
     end
 
     protected
+
+    # Statement is a set of expressions
+    def parse_statement(depth)
+      current_depth = 0
+      expressions = []
+      loop do
+        break if eof
+        if peek_token[:name] == :newline
+          next_token
+          current_depth == 0
+        end
+        while peek_token[:name] == :ident
+          next_token
+          current_depth += 1
+        end
+        break if current_depth < depth
+        case peek_token[:name]
+        when :if
+          next_token
+          condition = try_math(parse_expression)
+          then_block = parse_statement(depth+1)
+          if peek_token[:name] == :else
+            next_token
+            else_block = parse_statement(depth+1)
+          else
+            else_block = nil
+          end
+          stmt = {type: condition, cond: condition, then: then_block, else: else_block}
+        when :for
+          #for i = 1 to length-1
+          next_token
+          var_def = parse_expression
+          raise unless var_def[:type] == :define
+          raise unless peek_token == :to
+          next_token
+          to = try_math(parse_expression)
+          block = parse_statement(depth+1)
+          stmt = {type: :for, var: var_def, to: to, block: block}
+        else
+          stmt = try_math(parse_expression)
+          if !eof && stmt[:type] == :fun_call && depth == 0 && peek_token[:name] == :arrow
+            # Replace fun_call with fun_def
+          elsif !eof && peek_token[:name] == :arrow
+            raise
+          end
+        end
+        expressions << stmt
+      end
+      expressions
+    end
 
     # Expression is function call or binary operation
     def parse_expression
