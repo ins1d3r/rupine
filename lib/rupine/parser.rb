@@ -84,6 +84,7 @@ module Rupine
         else
           stmt = try_math(parse_expression)
           if !eof && stmt[:type] == :fun_call && depth == 0 && peek_token[:name] == :arrow
+            # Rewrite fun_call with fun_def
             next_token
             next_token if peek_token[:name] == :newline
             block = parse_statement(depth+1)
@@ -93,6 +94,7 @@ module Rupine
           end
         end
         expressions << stmt
+        # Now we should meet newline bc one expression per line
         if !eof && peek_token[:name] == :newline
           next_token
           current_depth = 0
@@ -106,8 +108,7 @@ module Rupine
     # Expression is function call or binary operation
     def parse_expression
       tkn = next_token
-      nxt = peek_token[:name] unless eof
-      current_node = nil
+      nxt = (!eof && peek_token[:name]) || nil
       if tkn[:name] == :id
         # Its function call or assignment
         if nxt == :lpar # (
@@ -166,6 +167,9 @@ module Rupine
           raise
         end
         exp
+      elsif token[:name] == :newline
+        # Seems that we have splitted expression
+        next_token
       else
         # TODO: Looks like unexpected token
         raise
@@ -181,7 +185,14 @@ module Rupine
         break if nxt == :rpar # There was no arguments
         arg = parse_expression
         # TODO: add keyword support and index of argument
-        args << arg
+        type = arg[:type]
+        if type == :define || type == :integer || type == :string || type == :var || type == :fun_call
+          args << arg
+        else
+          # You've passed some shit as an argument
+          raise
+        end
+
         break if nxt == :rpar # We've done parsing arguments
         break if eof # Looks like we've forgot closing parenthesis TODO: Throw exception
       end
