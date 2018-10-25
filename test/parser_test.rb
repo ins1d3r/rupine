@@ -26,6 +26,18 @@ class ParserTest < Minitest::Test
     assert res[0][:args][0][:type] == :fun_call
   end
 
+  def test_multiline_stmt
+    code = <<END
+rsi(close, 14)
+cci(ohlc4, 21)
+
+sma(close, 9)
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    assert_equal 3, res.size
+  end
+
   def test_simple_binary_operation
     tokens = @l.lex('2 + 2')
     res = @p.parse(tokens)
@@ -84,5 +96,50 @@ class ParserTest < Minitest::Test
     tokens = @l.lex('var1 = 5 + 4')
     res = @p.parse(tokens)
     assert_equal :define, res[0][:type]
+    assert_equal 'var1', res[0][:left][:name]
+  end
+
+  def test_if
+    code = <<~END
+if open > close
+    var1 = true
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    assert_equal :if, res[0][:type]
+  end
+  def test_if_else
+    code = <<END
+if open > close
+    var1 = true
+else
+\t var1 = false
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    assert_equal :if, res[0][:type]
+    refute_nil res[0][:else]
+  end
+
+  def test_for_loop
+    code = <<END
+for i = 1 to 10
+    i = i + 1
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    assert_equal :for, res[0][:type]
+    assert_equal 1, res[0][:block].size
+  end
+
+  def test_fun_def
+    code = <<END
+my_fun(arg1) =>
+    close
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    assert_equal :fun_def, res[0][:type]
+    assert_equal 1, res[0][:block].size
   end
 end

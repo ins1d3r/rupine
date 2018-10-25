@@ -1,5 +1,11 @@
 module Rupine
   class Parser
+    class EOFError < StandardError
+      def initialise(msg, expected=false)
+        super(msg)
+      end
+    end
+
     # Operator precendence
     OP_PREC = {
         question: 10,
@@ -31,48 +37,68 @@ module Rupine
     def parse_statement(depth)
       current_depth = 0
       expressions = []
+      # One expression per line
       loop do
-        break if eof
-        if peek_token[:name] == :newline
-          next_token
-          current_depth == 0
-        end
-        while peek_token[:name] == :ident
-          next_token
+        # Count indentation of current line
+        loop do
+          break unless peek_token(current_depth) && peek_token(current_depth)[:name] == :indent
           current_depth += 1
         end
-        break if current_depth < depth
+
+        if current_depth == depth
+          # We are still in our block
+          current_depth.times {next_token}
+        else
+          # We are out of the block
+          break
+        end
+
+        break if eof
+
+        # Check if we have any flow-control statements
         case peek_token[:name]
         when :if
           next_token
           condition = try_math(parse_expression)
+          next_token if peek_token[:name] == :newline
           then_block = parse_statement(depth+1)
-          if peek_token[:name] == :else
+          if !eof && peek_token[:name] == :else
             next_token
+            next_token if peek_token[:name] == :newline
             else_block = parse_statement(depth+1)
           else
             else_block = nil
           end
-          stmt = {type: condition, cond: condition, then: then_block, else: else_block}
+          stmt = {type: :if, cond: condition, then: then_block, else: else_block}
         when :for
           #for i = 1 to length-1
           next_token
           var_def = parse_expression
           raise unless var_def[:type] == :define
-          raise unless peek_token == :to
+          raise unless peek_token[:name] == :to
           next_token
           to = try_math(parse_expression)
+          next_token if peek_token[:name] == :newline
           block = parse_statement(depth+1)
           stmt = {type: :for, var: var_def, to: to, block: block}
         else
           stmt = try_math(parse_expression)
           if !eof && stmt[:type] == :fun_call && depth == 0 && peek_token[:name] == :arrow
-            # Replace fun_call with fun_def
+            next_token
+            next_token if peek_token[:name] == :newline
+            block = parse_statement(depth+1)
+            stmt = {type: :fun_def, name: stmt[:name], args: stmt[:args], block: block}
           elsif !eof && peek_token[:name] == :arrow
             raise
           end
         end
         expressions << stmt
+        if !eof && peek_token[:name] == :newline
+          next_token
+          current_depth = 0
+        elsif !eof
+          raise
+        end
       end
       expressions
     end
@@ -95,6 +121,7 @@ module Rupine
         elsif nxt == :define
           # Its variable assignment
           next_token # To drop define operator
+          # TODO: Clarify this statement
           current_node = {type: :define, left: {type: :var, name: tkn[:value]}, right: try_math(parse_expression)}
         else
           # Seems that we have a variable call
@@ -178,8 +205,8 @@ module Rupine
       left
     end
 
-    def peek_token
-      @current_tokens[0]
+    def peek_token(offset = 0)
+      @current_tokens[offset]
     end
 
     def next_token

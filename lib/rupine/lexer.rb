@@ -30,10 +30,11 @@ module Rupine
         {id: :float, rx:/[0-9]*\.[0-9]+/, value: ->(value){value.to_f}},
         {id: :integer, rx:/[0-9]+/, value: ->(value){value.to_i}},
         {id: :newline, rx: /\R/},
+        {id: :indent, rx:/\t| {4}+/},
         {id: :whitespace, rx:/\s+/}
     ]
 
-    KEYWORDS = %w[and or not if else for to]
+    KEYWORDS = %w[and or not if else for to continue break]
 
     def lex(code)
       src = code.dup
