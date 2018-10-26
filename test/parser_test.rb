@@ -101,8 +101,8 @@ END
 
   def test_if
     code = <<~END
-if open > close
-    var1 = true
+      if open > close
+          var1 = true
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
@@ -141,5 +141,52 @@ END
     res = @p.parse(tokens)
     assert_equal :fun_def, res[0][:type]
     assert_equal 1, res[0][:block].size
+  end
+
+  def test_offset
+    tokens = @l.lex('close[1]')
+    res = @p.parse(tokens)
+    assert_equal 1, res[0][:offset][:value]
+  end
+
+  def test_script
+    code = <<END
+//@version=3
+study("RSI Strategy", overlay=true)
+length = input( 14 )
+overSold = input( 30 )
+overBought = input( 70 )
+price = close
+
+vrsi = rsi(price, length)
+
+// if (not na(vrsi))
+//     if (crossover(vrsi, overSold))
+//         strategy.entry("RsiLE", strategy.long, comment="RsiLE")
+//     if (crossunder(vrsi, overBought))
+//         strategy.entry("RsiSE", strategy.short, comment="RsiSE")
+
+lastDir = na
+lastPrice = 0.0
+lastDir := na(lastDir[1]) ? na : lastDir[1]
+lastPrice := na(lastPrice[1]) ? na : lastPrice[1]
+
+longCondition = not na(vrsi) and crossover(vrsi, overSold) and (na(lastDir) or lastDir == -1)
+shortCondition = not na(vrsi) and crossunder(vrsi, overBought) and (na(lastDir) or lastDir == 1)
+if(longCondition)
+    lastDir := 1
+    lastPrice := open
+if(shortCondition)
+    lastDir := -1
+plotarrow(longCondition?1:na)
+plotarrow(shortCondition[1] ? -1 : na)
+
+alertcondition(longCondition, title='RSI buy', message='Buy alert')
+alertcondition(shortCondition[1], title='RSI sell', message='Sell alert')
+END
+    tokens = @l.lex(code)
+    res = @p.parse(tokens)
+    require 'json'
+    puts JSON.generate(res)
   end
 end

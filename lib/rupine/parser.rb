@@ -27,7 +27,6 @@ module Rupine
       # Script is a set of statements
       tvscript = parse_statement(0)
       @current_tokens = []
-      puts tvscript
       tvscript
     end
 
@@ -39,6 +38,7 @@ module Rupine
       expressions = []
       # One expression per line
       loop do
+        
         # Count indentation of current line
         loop do
           break unless peek_token(current_depth) && peek_token(current_depth)[:name] == :indent
@@ -50,8 +50,12 @@ module Rupine
           current_depth.times {next_token}
         else
           # We are out of the block
+          @current_tokens.unshift({name: :newline})
           break
         end
+
+        # Remove all empty lines
+        loop { (!eof && peek_token[:name] == :newline) ? next_token : break }
 
         break if eof
 
@@ -62,11 +66,13 @@ module Rupine
           condition = try_math(parse_expression)
           next_token if peek_token[:name] == :newline
           then_block = parse_statement(depth+1)
+          next_token if peek_token[:name] == :newline
           if !eof && peek_token[:name] == :else
             next_token
             next_token if peek_token[:name] == :newline
             else_block = parse_statement(depth+1)
           else
+            @current_tokens.unshift({name: :newline})
             else_block = nil
           end
           stmt = {type: :if, cond: condition, then: then_block, else: else_block}
@@ -103,6 +109,8 @@ module Rupine
         end
       end
       expressions
+    # rescue
+    #   return expressions
     end
 
     # Expression is function call or binary operation
@@ -119,7 +127,7 @@ module Rupine
             name: tkn[:value],
             args: parse_arguments
           }
-        elsif nxt == :define
+        elsif nxt == :define || nxt == :assign
           # Its variable assignment
           next_token # To drop define operator
           # TODO: Clarify this statement
@@ -128,16 +136,39 @@ module Rupine
           # Seems that we have a variable call
           current_node = {type: :var, name: tkn[:value]}
         end
-      elsif tkn[:name] == :integer
-        # Just return the integer
-        current_node = {type: :integer, value: tkn[:value]}
+        if %i[fun_call var].include?(current_node[:type]) && !eof && peek_token[:name] == :lsqbr
+          # Skip the bracket
+          next_token
+          offset = try_math(parse_expression)
+          current_node[:offset] = offset
+          if peek_token[:name] == :rsqbr
+            next_token
+          else
+            raise
+          end
+        end
+      elsif tkn[:name] == :integer || tkn[:name] == :string || tkn[:name] == :float
+        # Just return the constent
+        current_node = {type: tkn[:name], value: tkn[:value]}
+        if !eof && peek_token[:name] == :lsqbr
+          # Skip the bracket
+          next_token
+          offset = try_math(parse_expression)
+          current_node[:offset] = offset
+          if peek_token[:name] == :rsqbr
+            next_token
+          else
+            raise
+          end
+        end
+        # We don't need to modify current node, because constants are the same across bars
       elsif tkn[:name] == :minus || tkn[:name] == :plus || tkn[:name] == :not
         # We are dealing with unary operation
-        current_node = {
+        current_node = try_math({
             type: :unary,
             op: tkn[:name],
-            value: try_math(parse_expression)
-        }
+            value: try_math(parse_expression, 80)
+        })
       # elsif tkn[:name] == :question
       #   # Drop the question mark
       #   next_token
@@ -183,10 +214,10 @@ module Rupine
         nxt = peek_token[:name]
         nxt = next_token[:name] if nxt == :comma # TODO: Throw exception if there was no comma after argument
         break if nxt == :rpar # There was no arguments
-        arg = parse_expression
+        arg = try_math(parse_expression)
         # TODO: add keyword support and index of argument
         type = arg[:type]
-        if type == :define || type == :integer || type == :string || type == :var || type == :fun_call
+        if %i[define integer string var fun_call binary unary].include? type
           args << arg
         else
           # You've passed some shit as an argument

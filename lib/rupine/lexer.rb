@@ -11,6 +11,7 @@ module Rupine
         {id: :eq, rx: /==/},
         {id: :neq, rx: /!=/},
         {id: :define, rx: /=/},
+        {id: :assign, rx: /:=/},
         {id: :lpar, rx: /\(/},
         {id: :id, rx: /[a-zA-Z_][a-zA-Z0-9_]*/, value: ->(value){value}},
         {id: :lpar, rx: /\(/},
