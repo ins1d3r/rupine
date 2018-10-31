@@ -16,13 +16,19 @@ class ParserTest < Minitest::Test
   def test_multipar_fun_call
     tokens = @l.lex('study(var1, var2)')
     res = @p.parse(tokens)
-    assert res[0][:args].length == 2
+    assert_equal 2, res[0][:args].length
   end
 
   def test_nested_fun_call
     tokens = @l.lex('study(rsi(8, close))')
     res = @p.parse(tokens)
     assert res[0][:args][0][:type] == :fun_call
+  end
+
+  def test_kw_arg
+    tokens = @l.lex('study(overlay = false)')
+    res = @p.parse(tokens)
+    refute_nil res[0][:args]['overlay']
   end
 
   def test_multiline_stmt

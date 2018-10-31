@@ -211,7 +211,7 @@ module Rupine
 
     # Arguments are comma separated statements or assignments
     def parse_arguments
-      args = []
+      args = {}
       loop do
         nxt = peek_token[:name]
         nxt = next_token[:name] if nxt == :comma # TODO: Throw exception if there was no comma after argument
@@ -220,7 +220,11 @@ module Rupine
         # TODO: add keyword support and index of argument
         type = arg[:type]
         if %i[define integer string var fun_call binary unary].include? type
-          args << arg
+          if type == :define
+            args[arg[:left][:name]] = arg[:right]
+          else
+            args[args.size] = arg
+          end
         else
           # You've passed some shit as an argument
           raise
