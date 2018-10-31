@@ -35,7 +35,7 @@ module Rupine
         {id: :whitespace, rx:/\s+/}
     ]
 
-    KEYWORDS = %w[and or not if else for to continue break]
+    KEYWORDS = %w[and or not if else for to continue break true false]
 
     def lex(code)
       src = code.dup

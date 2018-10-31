@@ -65,11 +65,11 @@ class LexerTest < Minitest::Test
     l = ::Rupine::Lexer.new
     tkns = l.lex('true and false or true')
     assert_equal [
-                     {name: :id, value: 'true'},
+                     {name: :true},
                      {name: :and},
-                     {name: :id, value: 'false'},
+                     {name: :false},
                      {name: :or},
-                     {name: :id, value: 'true'}
+                     {name: :true}
                  ], tkns
   end
 

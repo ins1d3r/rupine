@@ -171,6 +171,8 @@ module Rupine
             op: tkn[:name],
             value: try_math(parse_expression, 80)
         })
+      elsif tkn[:name] == :true || tkn[:name] == :false
+        current_node = {type: tkn[:name]}
       # elsif tkn[:name] == :question
       #   # Drop the question mark
       #   next_token
