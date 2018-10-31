@@ -8,7 +8,6 @@ class ParserTest < Minitest::Test
   end
 
   def test_it_returns_something
-
     tokens = @l.lex('study()')
     res = @p.parse(tokens)
     refute_empty res
@@ -108,6 +107,7 @@ END
     res = @p.parse(tokens)
     assert_equal :if, res[0][:type]
   end
+
   def test_if_else
     code = <<END
 if open > close
@@ -186,7 +186,6 @@ alertcondition(shortCondition[1], title='RSI sell', message='Sell alert')
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    require 'json'
-    puts JSON.generate(res)
+    assert_equal 'study', res[0][:name]
   end
 end

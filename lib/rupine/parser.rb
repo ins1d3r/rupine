@@ -27,6 +27,8 @@ module Rupine
       # Script is a set of statements
       tvscript = parse_statement(0)
       @current_tokens = []
+      # TODO: extract fun_defs
+      # TODO: Assign unique id to plots and inputs
       tvscript
     end
 
