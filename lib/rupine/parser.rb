@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Rupine
   class Parser
     class EOFError < StandardError
@@ -13,7 +15,7 @@ module Rupine
         or: 20,
         and: 30,
         eq: 40, neq: 40,
-        lt: 50, gt: 50, lte: 50, gte: 50,
+        lt: 50, gt: 50, le: 50, ge: 50,
         plus: 60, minus: 60,
         mul: 70, div: 70, mod: 70
     }
@@ -24,9 +26,22 @@ module Rupine
     def parse(tokens)
       raise 'Not an array of tokens' unless tokens.is_a? Array
       @current_tokens = tokens
+      @inputs = {}
+      @plots = []
       # Script is a set of statements
-      tvscript = parse_statement(0)
+      script = parse_statement(0)
+
+      tvscript = {
+          inputs: @inputs,
+          plots: @plots,
+          script: script
+      }
+
+      # Reset all variables
       @current_tokens = []
+      @inputs = {}
+      @plots = []
+
       # TODO: extract fun_defs
       # TODO: Assign unique id to plots and inputs
       tvscript
@@ -58,7 +73,6 @@ module Rupine
 
         # Remove all empty lines
         loop { (!eof && peek_token[:name] == :newline) ? next_token : break }
-
         break if eof
 
         # Check if we have any flow-control statements
@@ -79,7 +93,8 @@ module Rupine
           end
           stmt = {type: :if, cond: condition, then: then_block, else: else_block}
         when :for
-          #for i = 1 to length-1
+          # Loop syntax: for i = 0 to 10
+          # Skip `for` token
           next_token
           var_def = parse_expression
           raise unless var_def[:type] == :define
@@ -111,8 +126,6 @@ module Rupine
         end
       end
       expressions
-    # rescue
-    #   return expressions
     end
 
     # Expression is function call or binary operation
@@ -129,6 +142,21 @@ module Rupine
             name: tkn[:value],
             args: parse_arguments
           }
+          # Extract input to script header
+          if current_node[:name] == 'input'
+            input = {}
+            input[:defval] = current_node[:args][0] || current_node[:args][:defval] || nil
+            input[:title] = current_node[:args][1] || current_node[:args][:title] || ''
+            id = SecureRandom.hex(4)
+            current_node[:id] = id
+            @inputs[id] = input
+
+          # Extract plot id to script header
+          elsif current_node[:name] == 'plot'
+            id = SecureRandom.hex(4)
+            @plots << id
+            current_node[:id] = id
+          end
         elsif nxt == :define || nxt == :assign
           # Its variable assignment
           next_token # To drop define operator
@@ -205,6 +233,10 @@ module Rupine
       elsif token[:name] == :newline
         # Seems that we have splitted expression
         next_token
+      # elsif token[:name] == :indent
+      #   # Seems that we have ...
+      #   next_token
+      #   return
       else
         # TODO: Looks like unexpected token
         raise
@@ -219,11 +251,10 @@ module Rupine
         nxt = next_token[:name] if nxt == :comma # TODO: Throw exception if there was no comma after argument
         break if nxt == :rpar # There was no arguments
         arg = try_math(parse_expression)
-        # TODO: add keyword support and index of argument
         type = arg[:type]
-        if %i[define integer string var fun_call binary unary].include? type
+        if %i[define integer float string var fun_call binary unary].include? type
           if type == :define
-            args[arg[:left][:name]] = arg[:right]
+            args[arg[:left][:name].to_sym] = arg[:right]
           else
             args[args.size] = arg
           end

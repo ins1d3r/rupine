@@ -13,7 +13,7 @@ module Rupine
         {id: :define, rx: /=/},
         {id: :assign, rx: /:=/},
         {id: :lpar, rx: /\(/},
-        {id: :id, rx: /[a-zA-Z_][a-zA-Z0-9_]*/, value: ->(value){value}},
+        {id: :id, rx: /[a-zA-Z_][a-zA-Z0-9_.]*/, value: ->(value){value}},
         {id: :lpar, rx: /\(/},
         {id: :rpar, rx: /\)/},
         {id: :lsqbr, rx: /\[/},
@@ -40,7 +40,11 @@ module Rupine
     def lex(code)
       src = code.dup
       tokens = []
-      # Prepare code for lexing
+      #### Prepare code for lexing
+      # Remove comments
+      src.gsub!(/\/\/.*$/, "\n")
+      # Remove tailing whitespaces
+      src.gsub!(/\s*\n/, "\n")
 
       # Separate code to tokens
       while src.length > 0
@@ -51,7 +55,7 @@ module Rupine
             token[:value] = token_def[:value].call(match) if token_def[:value]
             src = src[match.size..-1]
             tokens << token unless %i[whitespace comment].include? token[:name]
-            next
+            break
           end
         end
       end

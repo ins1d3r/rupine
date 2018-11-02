@@ -16,19 +16,19 @@ class ParserTest < Minitest::Test
   def test_multipar_fun_call
     tokens = @l.lex('study(var1, var2)')
     res = @p.parse(tokens)
-    assert_equal 2, res[0][:args].length
+    assert_equal 2, res[:script][0][:args].length
   end
 
   def test_nested_fun_call
     tokens = @l.lex('study(rsi(8, close))')
     res = @p.parse(tokens)
-    assert res[0][:args][0][:type] == :fun_call
+    assert res[:script][0][:args][0][:type] == :fun_call
   end
 
   def test_kw_arg
     tokens = @l.lex('study(overlay = false)')
     res = @p.parse(tokens)
-    refute_nil res[0][:args]['overlay']
+    refute_nil res[:script][0][:args][:overlay]
   end
 
   def test_multiline_stmt
@@ -46,62 +46,62 @@ END
   def test_simple_binary_operation
     tokens = @l.lex('2 + 2')
     res = @p.parse(tokens)
-    assert res[0][:type] == :binary
+    assert res[:script][0][:type] == :binary
   end
 
   def test_complex_binary_operation
     tokens = @l.lex('2 * 4 + 4')
     res = @p.parse(tokens)
-    assert res[0][:op] == :plus
-    assert res[0][:left][:left][:value] == 2
+    assert res[:script][0][:op] == :plus
+    assert res[:script][0][:left][:left][:value] == 2
   end
 
   def test_complex_binary_operation2
     tokens = @l.lex('(6 + 8) * 4')
     res = @p.parse(tokens)
-    assert res[0][:op] == :mul
-    assert res[0][:left][:right][:value] == 8
+    assert res[:script][0][:op] == :mul
+    assert res[:script][0][:left][:right][:value] == 8
   end
 
   def test_very_complex_binary
     tokens = @l.lex('5 * ((4-7) / 3 ) + 4')
     res = @p.parse(tokens)
-    assert res[0][:op] == :plus
-    assert res[0][:left][:right][:left][:right][:value] == 7
-    assert res[0][:left][:left][:value] == 5
+    assert res[:script][0][:op] == :plus
+    assert res[:script][0][:left][:right][:left][:right][:value] == 7
+    assert res[:script][0][:left][:left][:value] == 5
   end
 
   def test_unary_minus
     tokens = @l.lex('-10')
     res = @p.parse(tokens)
-    assert_equal :unary, res[0][:type]
+    assert_equal :unary, res[:script][0][:type]
   end
 
   def test_unary_minus_in_exp
     tokens = @l.lex('5 + -10')
     res = @p.parse(tokens)
-    assert_equal :unary, res[0][:right][:type]
-    assert_equal :minus, res[0][:right][:op]
+    assert_equal :unary, res[:script][0][:right][:type]
+    assert_equal :minus, res[:script][0][:right][:op]
   end
 
   def test_not_keyword
     tokens = @l.lex('not true')
     res = @p.parse(tokens)
-    assert_equal :unary, res[0][:type]
-    assert_equal :not, res[0][:op]
+    assert_equal :unary, res[:script][0][:type]
+    assert_equal :not, res[:script][0][:op]
   end
 
   def test_question_mark
     tokens = @l.lex('5 > 2 ? close : open')
     res = @p.parse(tokens)
-    assert_equal :question, res[0][:op]
+    assert_equal :question, res[:script][0][:op]
   end
 
   def test_var_def
     tokens = @l.lex('var1 = 5 + 4')
     res = @p.parse(tokens)
-    assert_equal :define, res[0][:type]
-    assert_equal 'var1', res[0][:left][:name]
+    assert_equal :define, res[:script][0][:type]
+    assert_equal 'var1', res[:script][0][:left][:name]
   end
 
   def test_if
@@ -111,7 +111,7 @@ END
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal :if, res[0][:type]
+    assert_equal :if, res[:script][0][:type]
   end
 
   def test_if_else
@@ -123,8 +123,8 @@ else
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal :if, res[0][:type]
-    refute_nil res[0][:else]
+    assert_equal :if, res[:script][0][:type]
+    refute_nil res[:script][0][:else]
   end
 
   def test_for_loop
@@ -134,8 +134,8 @@ for i = 1 to 10
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal :for, res[0][:type]
-    assert_equal 1, res[0][:block].size
+    assert_equal :for, res[:script][0][:type]
+    assert_equal 1, res[:script][0][:block].size
   end
 
   def test_fun_def
@@ -145,14 +145,14 @@ my_fun(arg1) =>
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal :fun_def, res[0][:type]
-    assert_equal 1, res[0][:block].size
+    assert_equal :fun_def, res[:script][0][:type]
+    assert_equal 1, res[:script][0][:block].size
   end
 
   def test_offset
     tokens = @l.lex('close[1]')
     res = @p.parse(tokens)
-    assert_equal 1, res[0][:offset][:value]
+    assert_equal 1, res[:script][0][:offset][:value]
   end
 
   def test_script
@@ -192,6 +192,6 @@ alertcondition(shortCondition[1], title='RSI sell', message='Sell alert')
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal 'study', res[0][:name]
+    assert_equal 'study', res[:script][0][:name]
   end
 end
