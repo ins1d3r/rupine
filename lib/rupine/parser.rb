@@ -3,7 +3,7 @@ require 'securerandom'
 module Rupine
   class Parser
     class EOFError < StandardError
-      def initialise(msg, expected=false)
+      def initialize(msg, expected=false)
         super(msg)
       end
     end
