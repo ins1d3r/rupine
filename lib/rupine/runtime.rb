@@ -1,11 +1,14 @@
 require 'rupine/runtime/context'
 
+require_relative 'runtime/stdlib/stdlib'
 module Rupine
   class Runtime
 
+    include StdLib
     attr_reader :contexts, :events
 
     OUTPUT_FUNCTIONS = %w[plot plotshape]
+
     def initialize
       @events = []
       @contexts = []
@@ -17,6 +20,7 @@ module Rupine
       @contexts.unshift(Rupine::Context.new(context))
       # Execute top-level block
       # Raise if first statement is not +study+ or +strategy+
+      raise unless %w[study strategy].include? tvscript[:script][0][:name]
       execute_block(tvscript[:script])
     end
 
@@ -30,7 +34,8 @@ module Rupine
     def execute_statement(tree)
       # Check if we have flow control statement
       if tree[:type] == :if
-
+        real_execute(tree[:cond]) ? execute_block(tree[:then]) : execute_block(tree[:else])
+        nil
       elsif tree[:type] == :for
 
       elsif tree[:type] == :fun_def
@@ -67,15 +72,8 @@ module Rupine
           @contexts[0].set_plot(event)
           @events << event
         elsif stmt[:name] == 'sma'
-          length = real_execute(stmt[:args][1], offset)
-          series = (offset..offset+length-1).collect do |i|
-            real_execute(stmt[:args][0], i)
-          end
-          return nil if series.include? nil
-          return series.reduce(:+) / length.to_f
+          return send(stmt[:name], stmt[:args], offset)
         end
-      # Variable define
-      elsif stmt[:type] == :define
 
       # Variable call
       elsif stmt[:type] == :var
@@ -87,7 +85,10 @@ module Rupine
       # Constant :integer, :string, :float
       elsif %i[integer string float].include? stmt[:type]
         return stmt[:value]
-
+      elsif stmt[:type] == :true
+        return true
+      elsif stmt[:type] == :false
+        return false
       # Binary
       elsif stmt[:type] == :binary
         left = real_execute(stmt[:left], offset)
