@@ -5,15 +5,16 @@ module Rupine
 
     attr_reader :contexts, :events
 
+    OUTPUT_FUNCTIONS = %w[plot plotshape]
     def initialize
       @events = []
       @contexts = []
     end
 
-    def execute_script(tvscript)
+    def execute_script(tvscript, context={})
       # Reset all variables
       @events = []
-      @contexts.unshift Rupine::Context.new
+      @contexts.unshift(Rupine::Context.new(context))
       # Execute top-level block
       # Raise if first statement is not +study+ or +strategy+
       execute_block(tvscript[:script])
@@ -41,10 +42,8 @@ module Rupine
     end
 
     def execute_expression(stmt)
-      # Function call
-      if stmt[:type] == :fun_call
-
-      # Variable define
+      if stmt[:type] == :fun_call && OUTPUT_FUNCTIONS.include?(stmt[:name])
+        real_execute(stmt)
       elsif stmt[:type] == :define
         # We cannot define with define by the rules of the Pine
         raise if stmt[:right][:type] == :define
@@ -52,15 +51,38 @@ module Rupine
         # This variable is already defined
         raise if @contexts[0].defined?(stmt[:left][:name])
 
-        @contexts[0].set(stmt[:left][:name], execute_statement(stmt[:right]))
+        @contexts[0].set(stmt[:left][:name], stmt[:right])
+        nil
+      else
+        stmt
+      end
+    end
+
+    def real_execute(stmt, offset=0)
+      offset = stmt[:offset].nil? ? offset : real_execute(stmt[:offset], offset) + offset
+      # Function call
+      if stmt[:type] == :fun_call
+        if stmt[:name] == 'plot'
+          event = { plot_id: stmt[:id], value: real_execute(stmt[:args][0])}
+          @contexts[0].set_plot(event)
+          @events << event
+        elsif stmt[:name] == 'sma'
+          length = real_execute(stmt[:args][1], offset)
+          series = (offset..offset+length-1).collect do |i|
+            real_execute(stmt[:args][0], i)
+          end
+          return nil if series.include? nil
+          return series.reduce(:+) / length.to_f
+        end
+      # Variable define
+      elsif stmt[:type] == :define
 
       # Variable call
       elsif stmt[:type] == :var
-        # :offset can be nil - that means we ask for the latest context
-        offset = stmt[:offset].nil? ? 0 : execute_statement(stmt[:offset])
+        return nil if @contexts[offset].nil?
         raise unless @contexts[offset].defined?(stmt[:name])
 
-        return @contexts[offset].get(stmt[:name])
+        return real_execute(@contexts[offset].get(stmt[:name]), offset)
 
       # Constant :integer, :string, :float
       elsif %i[integer string float].include? stmt[:type]
@@ -68,7 +90,22 @@ module Rupine
 
       # Binary
       elsif stmt[:type] == :binary
-
+        left = real_execute(stmt[:left], offset)
+        right = real_execute(stmt[:right], offset)
+        case stmt[:op]
+        when :plus
+          return left + right
+        when :minus
+          return left - right
+        when :div
+          return left / right
+        when :mul
+          return left * right
+        # TODO: add other binary operations
+        else
+          # Unknown binary operator
+          raise
+        end
       # Unary
       elsif stmt[:type] == :unary
 
