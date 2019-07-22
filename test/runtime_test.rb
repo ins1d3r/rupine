@@ -44,6 +44,16 @@ class RuntimeTest < Minitest::Test
     assert_equal 4.5, @r.events.first[:value]
   end
 
+  def test_wma
+    source = "study()\nplot(wma(close, 4))"
+    values = [0, 1, 2, 3, 4, 5, 6, 7]
+    res = compile(source)
+    6.times do
+      @r.execute_script(res, {close: {type: :integer, value: values.shift}})
+    end
+    assert_equal 4.0, @r.events.first[:value]
+  end
+
   def test_sma_with_offset
     source = "study()\nplot(sma(close, 4)[1])"
     values = [1, 2, 3, 4, 5, 6, 7]

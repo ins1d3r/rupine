@@ -35,7 +35,6 @@ module Rupine
       # Check if we have flow control statement
       if tree[:type] == :if
         real_execute(tree[:cond]) ? execute_block(tree[:then]) : execute_block(tree[:else])
-        nil
       elsif tree[:type] == :for
 
       elsif tree[:type] == :fun_def
@@ -71,7 +70,7 @@ module Rupine
           event = { plot_id: stmt[:id], value: real_execute(stmt[:args][0])}
           @contexts[0].set_plot(event)
           @events << event
-        elsif stmt[:name] == 'sma'
+        elsif stmt[:name] == 'sma' || stmt[:name] == 'wma'
           return send(stmt[:name], stmt[:args], offset)
         end
 
