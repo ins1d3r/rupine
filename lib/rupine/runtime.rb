@@ -92,6 +92,7 @@ module Rupine
       elsif stmt[:type] == :binary
         left = real_execute(stmt[:left], offset)
         right = real_execute(stmt[:right], offset)
+        return nil if left.nil? || right.nil?
         case stmt[:op]
         when :plus
           return left + right
