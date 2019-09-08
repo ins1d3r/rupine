@@ -1,0 +1,13 @@
+require 'rupine'
+
+lexer = Rupine::Lexer.new
+parser = Rupine::Parser.new
+runtime = Rupine::Runtime.new
+
+src = File.read('bin/code.pine')
+
+ast = parser.parse(lexer.lex(src))
+
+runtime.execute_script(ast)
+
+puts
