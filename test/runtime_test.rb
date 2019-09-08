@@ -94,6 +94,16 @@ class RuntimeTest < Minitest::Test
     assert_equal 1, @r.events.first[:value]
   end
 
+  def test_sma_in_sma
+    source = "study()\nplot(sma(sma(close[1], 4), 4))"
+    values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    res = compile(source)
+    10.times do
+      @r.execute_script(res, {close: {type: :integer, value: values.shift}})
+    end
+    assert_equal 6, @r.events.first[:value]
+  end
+
   def test_if
     source = <<SRC
 study()

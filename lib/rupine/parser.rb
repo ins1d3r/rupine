@@ -28,12 +28,14 @@ module Rupine
       @current_tokens = tokens
       @inputs = {}
       @plots = []
+      @user_functions = {}
       # Script is a set of statements
       script = parse_statement(0)
 
       tvscript = {
           inputs: @inputs,
           plots: @plots,
+          user_functions: @user_functions,
           script: script
       }
 
@@ -41,7 +43,7 @@ module Rupine
       @current_tokens = []
       @inputs = {}
       @plots = []
-
+      @user_functions = {}
       # TODO: extract fun_defs
       # TODO: Assign unique id to plots and inputs
       tvscript
@@ -111,12 +113,13 @@ module Rupine
             next_token
             next_token if peek_token[:name] == :newline
             block = parse_statement(depth+1)
-            stmt = {type: :fun_def, name: stmt[:name], args: stmt[:args], block: block}
+            @user_functions[stmt[:name].to_sym] = {args: stmt[:args], block: block}
+            stmt = nil # To skip it from adding to array
           elsif !eof && peek_token[:name] == :arrow
             raise
           end
         end
-        expressions << stmt
+        expressions << stmt if stmt
         # Now we should meet newline bc one expression per line
         if !eof && peek_token[:name] == :newline
           next_token
@@ -252,7 +255,7 @@ module Rupine
         break if nxt == :rpar # There was no arguments
         arg = try_math(parse_expression)
         type = arg[:type]
-        if %i[define integer float string var fun_call binary unary].include? type
+        if %i[define true false integer float string var fun_call binary unary].include? type
           if type == :define
             args[arg[:left][:name].to_sym] = arg[:right]
           else

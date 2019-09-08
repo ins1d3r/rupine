@@ -25,6 +25,7 @@ module Rupine
     end
 
     def execute_block(block)
+      return unless block.is_a? Enumerable
       # Execute each statement
       block.each do |stmt|
         execute_statement(stmt)

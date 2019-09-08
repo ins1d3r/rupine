@@ -40,7 +40,7 @@ sma(close, 9)
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal 3, res.size
+    assert_equal 3, res[:script].size
   end
 
   def test_simple_binary_operation
@@ -145,8 +145,8 @@ my_fun(arg1) =>
 END
     tokens = @l.lex(code)
     res = @p.parse(tokens)
-    assert_equal :fun_def, res[:script][0][:type]
-    assert_equal 1, res[:script][0][:block].size
+    refute_nil res[:user_functions][:my_fun]
+    assert_equal 1, res[:user_functions][:my_fun][:block].size
   end
 
   def test_offset
